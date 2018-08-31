@@ -1,0 +1,92 @@
+{
+  "name": "react-palette",
+  "version": "1.0.0",
+  "description": "Palette for React components",
+  "main": "build/react-palette.js",
+  "module": "build/react-palette.es.js",
+  "unpkg": "build/react-palette.min.js",
+  "author": "Anastasia Kupriyanova",
+  "license": "MIT",
+  "files": [
+    "build"
+  ],
+  "dependencies": {
+    "@ctrl/tinycolor": "^2.2.0",
+    "clipboard-polyfill": "^2.5.4",
+    "emotion": "^9.2.8",
+    "prop-types": "^15.6.2",
+    "randomcolor": "^0.5.3",
+    "react-color-extractor": "^1.1.2",
+    "react-emotion": "^9.2.10",
+    "tinygradient": "^0.4.1",
+    "values.js": "^1.0.3"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.4.11",
+    "@storybook/addon-links": "^3.4.11",
+    "@storybook/react": "^3.4.11",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.18",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "husky": "^1.0.0-rc.13",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.2.2",
+    "node-sass": "^4.9.3",
+    "prettier": "^1.14.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.4.2",
+    "react-test-renderer": "^16.5.2",
+    "rollup": "^0.65.0",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-filesize": "^4.0.1",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-uglify": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write --no-semi --single-quote",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "build:watch": "NODE_ENV=production rollup -c -w",
+    "formatall": "find src -name '*.js' | xargs prettier --write --no-semi --single-quote",
+    "lint": "eslint ./src",
+    "build": "rm -rf ./build && NODE_ENV=production rollup -c",
+    "validate": "yarn formatall && yarn lint && yarn test",
+    "test:watch": "NODE_ENV=test ./node_modules/.bin/jest --watch",
+    "test": "NODE_ENV=test ./node_modules/.bin/jest",
+    "storybook": "NODE_ENV=test start-storybook -p 6006"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "./test.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/tests/styleMock.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/test-setup.js"
+  }
+}
