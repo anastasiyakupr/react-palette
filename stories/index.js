@@ -15,7 +15,7 @@ const Container = props => <div style={styles}>{props.children}</div>
 
 class TestBasicPicker extends React.Component {
   state = {
-    color: 'hotpink'
+    color: '#2F9D66'
   }
 
   render() {
@@ -23,13 +23,13 @@ class TestBasicPicker extends React.Component {
 
     return (
       <div>
+        <h1 style={{ color }}>Basic Color Picker</h1>
         <BasicPicker
           color={color}
           onChange={c => this.setState({ color: c })}
           showTools
           theme="dark"
         />
-        <h1 style={{ color }}>Basic Color Picker</h1>
       </div>
     )
   }
@@ -45,12 +45,6 @@ class TestGradientPicker extends React.Component {
 
     return (
       <div>
-        <GradientPicker
-          mode={this.props.mode}
-          direction={this.props.direction}
-          reverse={this.props.reverse}
-          getGradient={grad => this.setState({ gradient: grad })}
-        />
         <h1
           className={css`
             background-image: ${gradient};
@@ -58,8 +52,14 @@ class TestGradientPicker extends React.Component {
             -webkit-text-fill-color: transparent;
           `}
         >
-          React Gradient Tools
+          Gradient Picker
         </h1>
+        <GradientPicker
+          mode={this.props.mode}
+          direction={this.props.direction}
+          reverse={this.props.reverse}
+          getGradient={grad => this.setState({ gradient: grad })}
+        />
       </div>
     )
   }
@@ -78,7 +78,7 @@ class TestSchemePicker extends React.Component {
           alignItems: 'center'
         }}
       >
-        <h1 style={{ color: this.state.color }}>React Color Tools</h1>
+        <h1 style={{ color: this.state.color }}>Scheme Picker</h1>
         <SchemePicker
           scheme="analogous"
           color={this.state.color}

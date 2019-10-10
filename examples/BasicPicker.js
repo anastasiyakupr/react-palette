@@ -3,7 +3,7 @@ import { BasicPicker } from 'react-color-tools'
 
 class App extends React.Component {
   state = {
-    color: 'hotpink'
+    color: '#2F9D66'
   }
 
   render() {
@@ -11,13 +11,13 @@ class App extends React.Component {
 
     return (
       <div>
+        <h1 style={{ color }}>React Color Tools</h1>
         <BasicPicker
           color={color}
           onChange={color => this.setState({ color })}
           theme="dark"
           showTools={true}
         />
-        <h1 style={{ color }}>React Color Tools</h1>
       </div>
     )
   }

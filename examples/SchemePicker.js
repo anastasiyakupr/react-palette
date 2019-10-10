@@ -2,7 +2,7 @@ import React from 'react'
 import { SchemePicker } from 'react-color-tools'
 
 class App extends React.Component {
-  state = { color: 'hotpink' }
+  state = { color: '#2F9D66' }
 
   render() {
     return (
